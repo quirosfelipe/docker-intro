@@ -1,10 +1,10 @@
 const http = require("http");
-const { readFile } = require("fs").promises;
+const fs = require("fs");
 
-const server = http.createServer(async (req, res) => {
+const server = http.createServer(function (req, res) {
   if (req.method === "GET" && req.url === "/") {
     const homeFilePath = "./helloworld.html";
-    const homeFileContents = await readFile(homeFilePath);
+    const homeFileContents =  fs.readFileSync(homeFilePath);
     res.statusCode = 200;
     res.setHeader("Content-Type", "text/html");
     res.end(homeFileContents);
@@ -21,3 +21,8 @@ const port = 8081;
 server.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
+server.close((err) => {
+  console.log('server closed')
+  process.exit(err ? 1 : 0)
+})
