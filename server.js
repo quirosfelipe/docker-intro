@@ -10,6 +10,11 @@ const server = http.createServer(function (req, res) {
     res.end(homeFileContents);
     return;
   }
+  if (req.method === "POST" && req.url ==="/close"){
+    // FIX ME , http response 200 ok  shutting down
+    console.log('server closed')
+    process.exit(err ? 1 : 0)
+  }
 
   res.statusCode = 404;
   res.setHeader("Content-Type", "text/plain");
@@ -22,7 +27,8 @@ server.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 
-server.close((err) => {
-  console.log('server closed')
-  process.exit(err ? 1 : 0)
-})
+// server.close((err) => {
+//   console.log('server closed')
+//   console.log(err)
+//   process.exit(err ? 1 : 0)
+// })
