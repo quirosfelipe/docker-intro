@@ -1,3 +1,4 @@
+
 // var assert = require('assert');
 // describe('Array', function() {
 //   describe('#indexOf()', function() {
@@ -7,6 +8,7 @@
 //   });
 // });
 
+
 var server = require('../server.js');
 
 describe('server', function () {
@@ -14,9 +16,11 @@ describe('server', function () {
     server.listen(8081);
   });
 
+
   //after(function () {
    // server.close();
   //});
+
 });
 
 var assert = require('assert'),
